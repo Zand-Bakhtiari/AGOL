@@ -12,11 +12,11 @@
 # 1. A file path to a working Directory,
 # 2. Username (The AGOL user must have the credentials to view this information).
 # 3. Password
-# The final output is a .CSV document that lists the Users Full Name, AGOL Username Email, Created Date, Last Login, Department, & Division.
+# The final output is a .CSV document that lists the Users Full Name, AGOL Username, Email, Created Date, Last Login, Department, & Division.
 # If a record has a blank under Department that means the user does not exist in AD.
 #
 # NOTE: This scrip was created for the purpose of comparing ArcGIS Online (AGOL) users to active directory users (AD).
-# While the scripts here in may work in my case, I am by no means an AD expert and some portions of this script might
+# While the script here in may work in my case, I am by no means an AD expert and some portions of this script might
 # need to be altered before used by others. Before scripting can begin you must first install the the AD PowerShell Module.
 # Link - https://theitbros.com/install-and-import-powershell-active-directory-module/
 #
@@ -37,8 +37,8 @@ OrgURL = #!!!!!AGOL ORG URL GOES HERE!!!!! <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 UN = (input("Please type in your Username (all lower case)>>>"))
 PW = (input("Please type in your Password >>>"))
 orgAccess = GIS(OrgURL,UN,PW)
-# Creates a list of ALL user emails in the Enterprise AGOL Organization and sets the max results to 1000
 
+# Creates a list of ALL user emails in the Enterprise AGOL Organization and sets the max results to 1000
 orgUsers = orgAccess.users.search(query="*", max_users=1000)
 print ("There are",len(orgUsers),"users")
 # Creates list
@@ -81,7 +81,7 @@ for l in orgUsers:
 # Weather or not the AD Username created here is valid does not matter as that will be validated later on in the script
 ADUserName = []
 print("Creating a list of AD Usernames.....")
-# Iterates through the OrgUsers list, strips off the end of the email(everything after @), then appends the Username of the UserName list.
+# Iterates through the OrgUsers list, strips off the end of the email(everything after @), then appends the Username to the UserName list.
 for user in orgUsers:
     split = '@'
     ADUserName.append(user.email.split(split, 1)[0])
