@@ -6,7 +6,7 @@
 #
 # Purpose: This script creates a list of AD “UserNames” then compares it against AD to determine if the AGOL users has
 # an AD account.  It does so by running a Windows PowerShell Script.  All the verbiage for the PowerShell script is
-# created within this script using User information pulled form AGOL. The script assumes that anything before the ‘@’ sign in the user name is the AD Username.
+# created within this script using User information pulled form AGOL. The script assumes that anything before the ‘@’ sign in the email is the AD Username.
 #
 # Only three inputs are required when running the script;
 # 1. A file path to a working Directory,
